@@ -1,0 +1,20 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Hangfire.Dashboard.Authorization</id>
+    <version>$version$</version>
+    <title>Hangfire Dashboard Authorization Filters</title>
+    <authors>Sergey Odinokov</authors>
+    <owners>odinserj</owners>
+    <projectUrl>https://github.com/HangfireIO/Hangfire.Dashboard.Authorization</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://raw.github.com/HangfireIO/Hangfire.Dashboard.Authorization/master/LICENSE</licenseUrl>
+    <description>$description$</description>
+    <copyright>Copyright © 2014 Sergey Odinokov</copyright>
+    <tags>Hangfire Dashboard Authorization</tags>
+	<dependencies>
+		<dependency id="Hangfire.Core" version="1.0.1" />
+		<dependency id="Microsoft.Owin" version="2.1.0" />
+	</dependencies>
+  </metadata>
+</package>
