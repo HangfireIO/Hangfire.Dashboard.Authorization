@@ -1,7 +1,19 @@
 Hangfire.Dashboard.Authorization
 ================================
 
-Some authorization filters for Hangfire's Dashboard
+Some authorization filters for Hangfire's Dashboard.
+
+Installation
+-------------
+
+This library is available as a NuGet Package:
+
+```
+Install-Package Hangfire.Dashboard.Authorization
+```
+
+Usage
+------
 
 ```csharp
 using Hangfire.Dashboard;
