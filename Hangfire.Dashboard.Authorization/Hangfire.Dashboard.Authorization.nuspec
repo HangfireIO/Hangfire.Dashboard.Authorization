@@ -14,7 +14,6 @@
     <tags>Hangfire Dashboard Authorization</tags>
 	<dependencies>
 		<dependency id="Hangfire.Core" version="[1.0.1,1.1)" />
-		<dependency id="Microsoft.Owin" version="2.1.0" />
 	</dependencies>
   </metadata>
 </package>
