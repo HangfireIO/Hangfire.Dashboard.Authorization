@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Principal;
 using Microsoft.Owin;
@@ -48,9 +49,11 @@ namespace Hangfire.Dashboard
             }
         }
 
-        public bool Authorize(IOwinContext context)
+        public bool Authorize(IDictionary<string, object> owinEnvironment)
         {
+            var context = new OwinContext(owinEnvironment);
             IPrincipal user = context.Authentication.User;
+
             if (user == null || user.Identity == null || !user.Identity.IsAuthenticated)
             {
                 return false;

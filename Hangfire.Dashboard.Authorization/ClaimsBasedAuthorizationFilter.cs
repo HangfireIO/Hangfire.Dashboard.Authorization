@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.Owin;
 
 namespace Hangfire.Dashboard
@@ -17,8 +18,9 @@ namespace Hangfire.Dashboard
             _value = value;
         }
 
-        public bool Authorize(IOwinContext context)
+        public bool Authorize(IDictionary<string, object> owinEnvironment)
         {
+            var context = new OwinContext(owinEnvironment);
             return context.Authentication.User.HasClaim(_type, _value);
         }
     }
