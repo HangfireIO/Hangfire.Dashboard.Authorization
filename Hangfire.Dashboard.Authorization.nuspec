@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Hangfire.Dashboard.Authorization</id>
-    <version>2.0.0-alpha3</version>
+    <version>2.0.0</version>
     <title>Hangfire Dashboard Authorization Filters</title>
     <authors>Sergey Odinokov</authors>
     <owners>odinserj</owners>
