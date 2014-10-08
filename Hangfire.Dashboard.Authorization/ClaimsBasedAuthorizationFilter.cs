@@ -21,6 +21,10 @@ namespace Hangfire.Dashboard
         public bool Authorize(IDictionary<string, object> owinEnvironment)
         {
             var context = new OwinContext(owinEnvironment);
+            
+            if (context.Authentication.User == null)
+                return false;
+                
             return context.Authentication.User.HasClaim(_type, _value);
         }
     }
