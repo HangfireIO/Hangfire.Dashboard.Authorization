@@ -4,7 +4,7 @@ Properties {
 
 Include "packages\Hangfire.Build.*\tools\psake-common.ps1"
 
-Task Default -Depends Collect
+Task Default -Depends Pack
 
 Task Merge -Depends Compile -Description "Run ILMerge /internalize to merge assemblies." {
     Merge-Assembly "Hangfire.Dashboard.Authorization" @("Microsoft.Owin")
