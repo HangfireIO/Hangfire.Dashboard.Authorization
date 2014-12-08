@@ -1,0 +1,38 @@
+# AppVeyor CI build file, https://ci.appveyor.com/project/odinserj/hangfire
+
+# Notes:
+#   - Minimal appveyor.yml file is an empty file. All sections are optional.
+#   - Indent each level of configuration with 2 spaces. Do not use tabs!
+#   - All section names are case-sensitive.
+#   - Section names should be unique on each level.
+
+# Don't edit manually! Use `build.bat version` command instead!
+version: 2.0.0-{build}
+
+# branches to build
+branches:
+  # whitelist
+  only:
+    - master
+    - dev
+
+#---------------------------------#
+#       build configuration       #
+#---------------------------------#
+
+# to run your custom scripts instead of automatic MSBuild
+build_script: build.bat pack
+
+#---------------------------------#
+#       tests configuration       #
+#---------------------------------#
+
+test: off
+
+#---------------------------------#
+#      artifacts configuration    #
+#---------------------------------#
+
+artifacts:
+  - path: 'build\**\*.nupkg'
+  - path: 'build\**\*.zip'

@@ -1,22 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hangfire.Dashboard.Authorization", "Hangfire.Dashboard.Authorization\Hangfire.Dashboard.Authorization.csproj", "{F7A61858-4830-4F2A-A16B-3C655D85598B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hangfire.Dashboard.Authorization", "src\Hangfire.Dashboard.Authorization\Hangfire.Dashboard.Authorization.csproj", "{F7A61858-4830-4F2A-A16B-3C655D85598B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{21DA233C-9BF1-4741-82DA-C80BA41E71FA}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NuGet.Config = .nuget\NuGet.Config
 		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{67D1F006-61BC-4043-ABF0-864DD19B83A5}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F93FD6F8-B50E-4531-B1B3-F9668EED5AA1}"
 	ProjectSection(SolutionItems) = preProject
-		build.cmd = build.cmd
-		Hangfire.Dashboard.Authorization.nuspec = Hangfire.Dashboard.Authorization.nuspec
-		ILMerge.CSharp.targets = ILMerge.CSharp.targets
+		appveyor.yml = appveyor.yml
+		nuspecs\Hangfire.Dashboard.Authorization.nuspec = nuspecs\Hangfire.Dashboard.Authorization.nuspec
+		psake-project.ps1 = psake-project.ps1
 	EndProjectSection
 EndProject
 Global
