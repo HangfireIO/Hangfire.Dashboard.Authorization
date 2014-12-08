@@ -12,6 +12,12 @@
     <description>Some authorization filters for Hangfire's Dashboard.</description>
     <copyright>Copyright © 2014 Sergey Odinokov</copyright>
     <tags>Hangfire Dashboard Authorization</tags>
+    <releaseNotes>https://github.com/HangfireIO/Hangfire.Dashboard.Authorization/releases
+    
+2.1.0
+* Added – Basic authentication filter (by @sergun).
+* Added – Check `Authentication.User` is not null in claims authorization filter (by @pjcunningham).
+  </releaseNotes>
 	<dependencies>
     <dependency id="Owin" version="1.0" />
 		<dependency id="Hangfire.Core" version="1.1.1" />
