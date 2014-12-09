@@ -82,7 +82,7 @@ namespace Hangfire.Dashboard
             context.Response.StatusCode = 401;
             context.Response.Headers.Append("WWW-Authenticate", "Basic realm=\"Hangfire Dashboard\"");
 
-            context.Response.Write("Authenticatoin is required.");
+            context.Response.Write("Authentication is required.");
 
             return false;
         }
