@@ -35,7 +35,10 @@ public void Configure(IAppBuilder app)
 
  *Note:* If you are using basic authentication together with OWIN security, configure Hangfire *BEFORE* OWIN security configuration.
 
-    Please, keep in mind, if you have no SSL-based instance for your web application you have to disable `SslRedirect` and `RequireSsl` options (it's enabled by default for security reasons). Otherwise you will have dead redirect.
+    Please, keep in mind, if you have no SSL-based instance for your
+    web application you have to disable `SslRedirect` and `RequireSsl`
+    options (it's enabled by default for security reasons).
+    Otherwise you will have dead redirect.
 
 ```csharp
 using Hangfire.Dashboard;
@@ -88,8 +91,9 @@ using (var cryptoProvider = System.Security.Cryptography.SHA1.Create())
 {
     byte[] passwordHash = cryptoProvider.ComputeHash(Encoding.UTF8.GetBytes(password));
     string result = "new byte[] { " + 
-        String.Join(",", passwordHash.Select(x => "0x" + x.ToString("x2")).ToArray()) + " } ";
+        String.Join(",", passwordHash.Select(x => "0x" + x.ToString("x2")).ToArray())
+         + " } ";
 }
 ```
 
-The result variable will contain byte array definition with your passowrd.
+The `result` variable will contain byte array definition with your passowrd.
