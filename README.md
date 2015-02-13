@@ -48,39 +48,39 @@ public void Configure(IAppBuilder app)
     app.UseHangfire(config => 
     {
         config.UseAuthorizationFilters(
-                new BasicAuthAuthorizationFilter(
-                        new BasicAuthAuthorizationFilterOptions
+            new BasicAuthAuthorizationFilter(
+                new BasicAuthAuthorizationFilterOptions
+                {
+                    // Require secure connection for dashboard
+                    RequireSsl = true,
+
+                    // Case sensitive login checking
+                    LoginCaseSensitive = true,
+
+                    // Users
+                    Users = new[]
+                    {
+                        new BasicAuthAuthorizationUser
                         {
-                            // Require secure connection for dashboard
-                            RequireSsl = true,
+                            Login = "Administrator-1",
 
-                            // Case sensitive login checking
-                            LoginCaseSensitive = true,
+                            // Password as plain text
+                            PasswordClear = "test"
+                        },
 
-                            // Users
-                            Users = new[]
-                            {
-                                new BasicAuthAuthorizationUser
-                                {
-                                    Login = "Administrator-1",
+                        new BasicAuthAuthorizationUser
+                        {
+                            Login = "Administrator-2",
 
-                                    // Password as plain text
-                                    PasswordClear = "test"
-                                },
-
-                                new BasicAuthAuthorizationUser
-                                {
-                                    Login = "Administrator-2",
-
-                                    // Password as SHA1 hash
-                                    Password = Password = new byte[]{0xa9,
-                                    0x4a, 0x8f, 0xe5, 0xcc, 0xb1, 0x9b,
-                                    0xa6, 0x1c, 0x4c, 0x08, 0x73, 0xd3,
-                                    0x91, 0xe9, 0x87, 0x98, 0x2f, 0xbb,
-                                    0xd3}
-                                }
-                            }
-                        }));
+                            // Password as SHA1 hash
+                            Password = new byte[]{0xa9,
+                                0x4a, 0x8f, 0xe5, 0xcc, 0xb1, 0x9b,
+                                0xa6, 0x1c, 0x4c, 0x08, 0x73, 0xd3,
+                                0x91, 0xe9, 0x87, 0x98, 0x2f, 0xbb,
+                                0xd3}
+                        }
+                    }
+                }));
     });
 }
 ```
