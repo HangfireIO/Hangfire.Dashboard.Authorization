@@ -37,11 +37,8 @@ public void Configure(IAppBuilder app)
 ## Basic authentication
 
  *Note:* If you are using basic authentication together with OWIN security, configure Hangfire *BEFORE* OWIN security configuration.
-
-    Please, keep in mind, if you have no SSL-based instance for your
-    web application you have to disable `SslRedirect` and `RequireSsl`
-    options (it's enabled by default for security reasons).
-    Otherwise you will have dead redirect.
+ 
+Please, keep in mind, if you have no SSL-based instance for your web application you have to disable `SslRedirect` and `RequireSsl` options (it's enabled by default for security reasons). Otherwise you will have dead redirect.
 
 ```csharp
 var filter = new BasicAuthAuthorizationFilter(
