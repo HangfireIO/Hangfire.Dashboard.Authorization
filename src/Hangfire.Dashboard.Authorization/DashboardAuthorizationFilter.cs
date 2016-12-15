@@ -53,7 +53,7 @@ namespace Hangfire.Dashboard
             var context = new OwinContext(dashboardContext.GetOwinEnvironment());
             IPrincipal user = context.Authentication.User;
 
-            if (user?.Identity == null || !user.Identity.IsAuthenticated)
+            if (user == null || user.Identity == null || !user.Identity.IsAuthenticated)
             {
                 return false;
             }
