@@ -72,6 +72,7 @@
     <Compile Include="AuthorizationFilter.cs" />
     <Compile Include="BasicAuthAuthorizationFilter.cs" />
     <Compile Include="ClaimsBasedAuthorizationFilter.cs" />
+    <Compile Include="ClaimsBasedDashboardAuthorizationFilter.cs" />
     <Compile Include="DashboardAuthorizationFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BasicAuthAuthorizationFilterOptions.cs" />
