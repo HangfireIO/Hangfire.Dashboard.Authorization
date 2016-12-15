@@ -1,18 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Principal;
 using Microsoft.Owin;
 
 namespace Hangfire.Dashboard
 {
-    [Obsolete("Please use `IDashboardAuthorizationFilter` instead. Will be removed in 2.0.0.")]
-    public class AuthorizationFilter : IAuthorizationFilter
+    public class DashboardAuthorizationFilter : IDashboardAuthorizationFilter
     {
+        private static readonly string[] EmptyArray = new string[0];
+
         private string _roles;
-        private string[] _rolesSplit = StringHelpers.EmptyArray;
+        private string[] _rolesSplit = EmptyArray;
         private string _users;
-        private string[] _usersSplit = StringHelpers.EmptyArray;
+        private string[] _usersSplit = EmptyArray;
 
         /// <summary>
         /// Gets or sets the authorized roles.
@@ -48,12 +48,12 @@ namespace Hangfire.Dashboard
             }
         }
 
-        public bool Authorize(IDictionary<string, object> owinEnvironment)
+        public bool Authorize(DashboardContext dashboardContext)
         {
-            var context = new OwinContext(owinEnvironment);
+            var context = new OwinContext(dashboardContext.GetOwinEnvironment());
             IPrincipal user = context.Authentication.User;
 
-            if (user == null || user.Identity == null || !user.Identity.IsAuthenticated)
+            if (user?.Identity == null || !user.Identity.IsAuthenticated)
             {
                 return false;
             }
