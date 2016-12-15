@@ -27,7 +27,7 @@ public void Configure(IAppBuilder app)
         Authorization = new [] 
         {
             new DashboardAuthorizationFilter { Users = "admin, superuser", Roles = "advanced" },
-            
+            new ClaimsBasedDashboardAuthorizationFilter("name", "value")
         }
     };
     app.UseHangfireDashboard("/hangfire", options);
