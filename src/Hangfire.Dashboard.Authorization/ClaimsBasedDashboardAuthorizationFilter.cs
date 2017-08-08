@@ -1,16 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using Microsoft.Owin;
 
 namespace Hangfire.Dashboard
 {
-    [Obsolete("Please use `ClaimsBasedDashboardAuthorizationFilter` instead")]
-    public class ClaimsBasedAuthorizationFilter : IAuthorizationFilter
+    public class ClaimsBasedDashboardAuthorizationFilter : IDashboardAuthorizationFilter
     {
         private readonly string _type;
         private readonly string _value;
 
-        public ClaimsBasedAuthorizationFilter(string type, string value)
+        public ClaimsBasedDashboardAuthorizationFilter(string type, string value)
         {
             if (type == null) throw new ArgumentNullException("type");
             if (value == null) throw new ArgumentNullException("value");
@@ -19,9 +17,9 @@ namespace Hangfire.Dashboard
             _value = value;
         }
 
-        public bool Authorize(IDictionary<string, object> owinEnvironment)
+        public bool Authorize(DashboardContext dashboardContext)
         {
-            var context = new OwinContext(owinEnvironment);
+            var context = new OwinContext(dashboardContext.GetOwinEnvironment());
             
             if (context.Authentication.User == null)
                 return false;

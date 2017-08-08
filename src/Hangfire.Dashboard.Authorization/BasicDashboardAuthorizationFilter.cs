@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
@@ -11,24 +10,23 @@ namespace Hangfire.Dashboard
     /// Represents Hangfire authorization filter for basic authentication.
     /// </summary>
     /// <remarks>If you are using this together with OWIN security, configure Hangfire BEFORE OWIN security configuration.</remarks>
-    [Obsolete("Please use `BasicDashboardAuthorizationFilter` instead")]
-    public class BasicAuthAuthorizationFilter : IAuthorizationFilter
+    public class BasicDashboardAuthorizationFilter : IDashboardAuthorizationFilter
     {
         private readonly BasicAuthAuthorizationFilterOptions _options;
         
-        public BasicAuthAuthorizationFilter()
+        public BasicDashboardAuthorizationFilter()
             : this(new BasicAuthAuthorizationFilterOptions())
         {
         }
         
-        public BasicAuthAuthorizationFilter(BasicAuthAuthorizationFilterOptions options)
+        public BasicDashboardAuthorizationFilter(BasicAuthAuthorizationFilterOptions options)
         {
             _options = options;
         }
         
-        public bool Authorize(IDictionary<string, object> owinEnvironment)
+        public bool Authorize(DashboardContext dashboardContext)
         {
-            OwinContext context = new OwinContext(owinEnvironment);
+            OwinContext context = new OwinContext(dashboardContext.GetOwinEnvironment());
 
             if ((_options.SslRedirect == true) && (context.Request.Uri.Scheme != "https"))
             {
