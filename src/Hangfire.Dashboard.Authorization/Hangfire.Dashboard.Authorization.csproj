@@ -64,6 +64,7 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="DashboardAuthorizationFilter.cs" />
     <Compile Include="AuthorizationFilter.cs" />
     <Compile Include="BasicDashboardAuthorizationFilter.cs" />
     <Compile Include="BasicAuthAuthorizationFilter.cs" />

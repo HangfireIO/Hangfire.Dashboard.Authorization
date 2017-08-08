@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Principal;
 using Microsoft.Owin;
 
 namespace Hangfire.Dashboard
 {
-    [Obsolete("Please use `DashboardAuthorizationFilter` instead")]
-    public class AuthorizationFilter : IAuthorizationFilter
+    public class DashboardAuthorizationFilter : IDashboardAuthorizationFilter
     {
         private static readonly string[] EmptyArray = new string[0];
 
@@ -50,9 +48,9 @@ namespace Hangfire.Dashboard
             }
         }
 
-        public bool Authorize(IDictionary<string, object> owinEnvironment)
+        public bool Authorize(DashboardContext dashboardContext)
         {
-            var context = new OwinContext(owinEnvironment);
+            var context = new OwinContext(dashboardContext.GetOwinEnvironment());
             IPrincipal user = context.Authentication.User;
 
             if (user == null || user.Identity == null || !user.Identity.IsAuthenticated)
