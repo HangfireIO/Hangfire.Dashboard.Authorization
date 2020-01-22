@@ -6,6 +6,7 @@ using Microsoft.Owin;
 
 namespace Hangfire.Dashboard
 {
+    [Obsolete("Please use `DashboardAuthorizationFilter` instead")]
     public class AuthorizationFilter : IAuthorizationFilter
     {
         private static readonly string[] EmptyArray = new string[0];
