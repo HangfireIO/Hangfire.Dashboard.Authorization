@@ -15,6 +15,8 @@ Install-Package Hangfire.Dashboard.Authorization
 Usage
 ------
 
+All the available classes implement both `IAuthorizationFilter` and `IDashboardAuthorizationFilter` interfaces, and compatible with Hangfire.Core 1.6 and later.
+
 ## OWIN-based authentication
 
 ```csharp
