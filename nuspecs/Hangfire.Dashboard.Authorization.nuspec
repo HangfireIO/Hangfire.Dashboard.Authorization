@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <package >
   <metadata>
     <id>Hangfire.Dashboard.Authorization</id>
@@ -18,10 +18,10 @@
 * Added – Basic authentication filter (by @sergun).
 * Added – Check `Authentication.User` is not null in claims authorization filter (by @pjcunningham).
   </releaseNotes>
-	<dependencies>
-    <dependency id="Owin" version="1.0" />
-		<dependency id="Hangfire.Core" version="1.1.1" />
-	</dependencies>
+    <dependencies>
+      <dependency id="Owin" version="1.0" />
+      <dependency id="Hangfire.Core" version="1.1.1" />
+    </dependencies>
   </metadata>
   <files>
     <file src="Net45\Hangfire.Dashboard.Authorization.dll" target="lib\net45" />
