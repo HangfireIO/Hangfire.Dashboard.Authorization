@@ -67,6 +67,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BasicAuthAuthorizationFilterOptions.cs" />
     <Compile Include="BasicAuthAuthorizationUser.cs" />
+    <Compile Include="StringHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -27,7 +27,7 @@ namespace Hangfire.Dashboard
             set
             {
                 _roles = value;
-                _rolesSplit = SplitString(value);
+                _rolesSplit = StringHelpers.SplitString(value);
             }
         }
 
@@ -44,7 +44,7 @@ namespace Hangfire.Dashboard
             set
             {
                 _users = value;
-                _usersSplit = SplitString(value);
+                _usersSplit = StringHelpers.SplitString(value);
             }
         }
 
@@ -69,25 +69,6 @@ namespace Hangfire.Dashboard
             }
 
             return true;
-        }
-
-        /// <summary>
-        /// Splits the string on commas and removes any leading/trailing whitespace from each result item.
-        /// </summary>
-        /// <param name="original">The input string.</param>
-        /// <returns>An array of strings parsed from the input <paramref name="original"/> string.</returns>
-        private static string[] SplitString(string original)
-        {
-            if (String.IsNullOrEmpty(original))
-            {
-                return EmptyArray;
-            }
-
-            var split = from piece in original.Split(',')
-                        let trimmed = piece.Trim()
-                        where !String.IsNullOrEmpty(trimmed)
-                        select trimmed;
-            return split.ToArray();
         }
     }
 }

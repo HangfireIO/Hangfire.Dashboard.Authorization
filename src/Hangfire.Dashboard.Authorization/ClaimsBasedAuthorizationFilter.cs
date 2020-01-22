@@ -4,7 +4,7 @@ using Microsoft.Owin;
 
 namespace Hangfire.Dashboard
 {
-    [Obsolete("Please use `ClaimsBasedDashboardAuthorizationFilter` instead")]
+    [Obsolete("Please use `ClaimsBasedDashboardAuthorizationFilter` instead. Will be removed in 4.0.0.")]
     public class ClaimsBasedAuthorizationFilter : IAuthorizationFilter
     {
         private readonly string _type;
