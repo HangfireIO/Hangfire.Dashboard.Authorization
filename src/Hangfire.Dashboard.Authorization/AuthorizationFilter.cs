@@ -6,13 +6,14 @@ using Microsoft.Owin;
 
 namespace Hangfire.Dashboard
 {
-    [Obsolete("Please use `DashboardAuthorizationFilter` instead. Will be removed in 4.0.0.")]
-    public class AuthorizationFilter : IAuthorizationFilter
+    public class AuthorizationFilter : IAuthorizationFilter, IDashboardAuthorizationFilter
     {
+        private static readonly string[] EmptyArray = new string[0];
+
         private string _roles;
-        private string[] _rolesSplit = StringHelpers.EmptyArray;
+        private string[] _rolesSplit = EmptyArray;
         private string _users;
-        private string[] _usersSplit = StringHelpers.EmptyArray;
+        private string[] _usersSplit = EmptyArray;
 
         /// <summary>
         /// Gets or sets the authorized roles.
@@ -27,7 +28,7 @@ namespace Hangfire.Dashboard
             set
             {
                 _roles = value;
-                _rolesSplit = StringHelpers.SplitString(value);
+                _rolesSplit = SplitString(value);
             }
         }
 
@@ -44,8 +45,13 @@ namespace Hangfire.Dashboard
             set
             {
                 _users = value;
-                _usersSplit = StringHelpers.SplitString(value);
+                _usersSplit = SplitString(value);
             }
+        }
+
+        public bool Authorize(DashboardContext context)
+        {
+            return Authorize(context.GetOwinEnvironment());
         }
 
         public bool Authorize(IDictionary<string, object> owinEnvironment)
@@ -69,6 +75,26 @@ namespace Hangfire.Dashboard
             }
 
             return true;
+        }
+
+
+        /// <summary>
+        /// Splits the string on commas and removes any leading/trailing whitespace from each result item.
+        /// </summary>
+        /// <param name="original">The input string.</param>
+        /// <returns>An array of strings parsed from the input <paramref name="original"/> string.</returns>
+        private static string[] SplitString(string original)
+        {
+            if (String.IsNullOrEmpty(original))
+            {
+                return EmptyArray;
+            }
+
+            var split = from piece in original.Split(',')
+                let trimmed = piece.Trim()
+                where !String.IsNullOrEmpty(trimmed)
+                select trimmed;
+            return split.ToArray();
         }
     }
 }

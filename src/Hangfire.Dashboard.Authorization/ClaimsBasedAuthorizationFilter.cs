@@ -4,8 +4,7 @@ using Microsoft.Owin;
 
 namespace Hangfire.Dashboard
 {
-    [Obsolete("Please use `ClaimsBasedDashboardAuthorizationFilter` instead. Will be removed in 4.0.0.")]
-    public class ClaimsBasedAuthorizationFilter : IAuthorizationFilter
+    public class ClaimsBasedAuthorizationFilter : IAuthorizationFilter, IDashboardAuthorizationFilter
     {
         private readonly string _type;
         private readonly string _value;
@@ -19,6 +18,11 @@ namespace Hangfire.Dashboard
             _value = value;
         }
 
+        public bool Authorize(DashboardContext context)
+        {
+            return Authorize(context.GetOwinEnvironment());
+        }
+
         public bool Authorize(IDictionary<string, object> owinEnvironment)
         {
             var context = new OwinContext(owinEnvironment);
@@ -28,5 +32,6 @@ namespace Hangfire.Dashboard
                 
             return context.Authentication.User.HasClaim(_type, _value);
         }
+
     }
 }

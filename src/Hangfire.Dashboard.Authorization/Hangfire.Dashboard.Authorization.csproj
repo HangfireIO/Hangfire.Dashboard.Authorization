@@ -58,16 +58,12 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="DashboardAuthorizationFilter.cs" />
     <Compile Include="AuthorizationFilter.cs" />
-    <Compile Include="BasicDashboardAuthorizationFilter.cs" />
     <Compile Include="BasicAuthAuthorizationFilter.cs" />
-    <Compile Include="ClaimsBasedDashboardAuthorizationFilter.cs" />
     <Compile Include="ClaimsBasedAuthorizationFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BasicAuthAuthorizationFilterOptions.cs" />
     <Compile Include="BasicAuthAuthorizationUser.cs" />
-    <Compile Include="StringHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

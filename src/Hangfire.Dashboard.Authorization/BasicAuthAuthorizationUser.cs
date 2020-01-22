@@ -23,7 +23,7 @@ namespace Hangfire.Dashboard
         /// <summary>
         /// Setter to update password as plain text
         /// </summary>
-        public string PasswordClear
+        public string PasswordHMACClearText
         {
             set
             {
