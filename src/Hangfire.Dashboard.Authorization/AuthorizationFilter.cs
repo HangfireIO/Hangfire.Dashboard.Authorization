@@ -6,7 +6,7 @@ using Microsoft.Owin;
 
 namespace Hangfire.Dashboard
 {
-    [Obsolete("Please use `IDashboardAuthorizationFilter` instead. Will be removed in 2.0.0.")]
+    [Obsolete("Please use `DashboardAuthorizationFilter` instead. Will be removed in 4.0.0.")]
     public class AuthorizationFilter : IAuthorizationFilter
     {
         private string _roles;

@@ -41,7 +41,7 @@ public void Configure(IAppBuilder app)
 Please, keep in mind, if you have no SSL-based instance for your web application you have to disable `SslRedirect` and `RequireSsl` options (it's enabled by default for security reasons). Otherwise you will have dead redirect.
 
 ```csharp
-var filter = new BasicAuthAuthorizationFilter(
+var filter = new BasicDashboardAuthorizationFilter(
     new BasicAuthAuthorizationFilterOptions
     {
         // Require secure connection for dashboard

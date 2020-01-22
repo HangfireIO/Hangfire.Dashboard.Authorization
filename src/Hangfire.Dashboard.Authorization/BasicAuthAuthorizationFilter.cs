@@ -11,18 +11,19 @@ namespace Hangfire.Dashboard
     /// Represents Hangfire authorization filter for basic authentication.
     /// </summary>
     /// <remarks>If you are using this together with OWIN security, configure Hangfire BEFORE OWIN security configuration.</remarks>
+    [Obsolete("Please use `BasicDashboardAuthorizationFilter` instead")]
     public class BasicAuthAuthorizationFilter : IAuthorizationFilter
     {
         private readonly BasicAuthAuthorizationFilterOptions _options;
         
         public BasicAuthAuthorizationFilter()
-        	: this(new BasicAuthAuthorizationFilterOptions())
+            : this(new BasicAuthAuthorizationFilterOptions())
         {
         }
         
         public BasicAuthAuthorizationFilter(BasicAuthAuthorizationFilterOptions options)
         {
-        	_options = options;
+            _options = options;
         }
         
         public bool Authorize(IDictionary<string, object> owinEnvironment)
