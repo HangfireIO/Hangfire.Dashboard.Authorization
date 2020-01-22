@@ -16,7 +16,7 @@ namespace Hangfire.Dashboard
         public string Login { get; set; }
 
         /// <summary>
-        /// SHA1 hashed password
+        /// HMAC hashed password
         /// </summary>
         public byte[] Password { get; set; }
 
@@ -27,7 +27,7 @@ namespace Hangfire.Dashboard
         {
             set
             {
-                using (var cryptoProvider = SHA1.Create())
+                using (var cryptoProvider = HMAC.Create())
                 {
                     Password = cryptoProvider.ComputeHash(Encoding.UTF8.GetBytes(value));
                 }
@@ -51,7 +51,7 @@ namespace Hangfire.Dashboard
 
             if (login.Equals(Login, loginCaseSensitive ? StringComparison.InvariantCulture : StringComparison.InvariantCultureIgnoreCase) == true)
             {
-                using (var cryptoProvider = SHA1.Create())
+                using (var cryptoProvider = HMAC.Create())
                 {
                     byte[] passwordHash = cryptoProvider.ComputeHash(Encoding.UTF8.GetBytes(password));
                     return StructuralComparisons.StructuralEqualityComparer.Equals(passwordHash, Password);
