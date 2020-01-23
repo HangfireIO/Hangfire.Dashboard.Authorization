@@ -1,7 +1,7 @@
 Hangfire.Dashboard.Authorization
 ================================
 
-Some authorization filters for Hangfire's Dashboard.
+Some authorization filters for Hangfire's Dashboard for .NET Framework-based ASP.NET Applications.
 
 Installation
 -------------
@@ -56,7 +56,7 @@ var filter = new BasicAuthAuthorizationFilter(
             new BasicAuthAuthorizationUser
             {
                 Login = "Administrator-1",
-                // Password as plain text
+                // Password as plain text, SHA1 will be used
                 PasswordClear = "test"
             },
             new BasicAuthAuthorizationUser
@@ -71,6 +71,16 @@ var filter = new BasicAuthAuthorizationFilter(
             }
         }
 });
+```
+
+It is also possible to use other than `SHA1` crypto provider by specifying it when creating a user:
+
+```
+var user = new BasicAuthAuthorizationUser(HMAC.Create)
+{
+    Login = "Admin",
+    PasswordClear = "Password" // HMAC will be used instead
+}
 ```
 
 ### How to generate password hash
