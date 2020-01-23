@@ -33,7 +33,7 @@ namespace Hangfire.Dashboard
         /// Gets the callback that is used for password hash calculation when setting or
         /// validating a password.
         /// </summary>
-        public Func<HashAlgorithm> CryptoProviderFactory { get; }
+        public Func<HashAlgorithm> CryptoProviderFactory { get; private set; }
 
         /// <summary>
         /// Gets or sets a login name for the user.
