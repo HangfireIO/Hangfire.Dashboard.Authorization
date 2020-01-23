@@ -18,6 +18,7 @@
 * Added – All classes now implement `IDashboardAuthorizationFilter` interface appeared in Hangfire 1.6.0 (by @antonioseric, @spoofi).
 * Added – It's possible to use custom crypto provider such as `HMAC` when creating a BasicAuth user (by @faizulhaque).
 * Changed – Minimal `Hangfire.Core` package version is bumped to 1.6.0.
+* Changed – Internalized `Microsoft.Owin` package version is now 3.1.0.
 * Fixed – Remove `AssemblyFileVersion` attribute to avoid problems with installers and GAC (by @fire-eagle).
 * Fixed – Different `README.md` updates and fixes (by @spoofi).
     
