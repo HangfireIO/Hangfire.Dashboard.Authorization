@@ -13,15 +13,22 @@
     <copyright>Copyright © 2014 Sergey Odinokov</copyright>
     <tags>Hangfire Dashboard Authorization</tags>
     <releaseNotes>https://github.com/HangfireIO/Hangfire.Dashboard.Authorization/releases
+
+3.0.0
+* Added – All classes now implement `IDashboardAuthorizationFilter` interface appeared in Hangfire 1.6.0 (by @antonioseric, @spoofi).
+* Added – It's possible to use custom crypto provider such as `HMAC` when creating a BasicAuth user (by @faizulhaque).
+* Changed – Minimal `Hangfire.Core` package version is bumped to 1.6.0.
+* Fixed – Remove `AssemblyFileVersion` attribute to avoid problems with installers and GAC (by @fire-eagle).
+* Fixed – Different `README.md` updates and fixes (by @spoofi).
     
 2.1.0
 * Added – Basic authentication filter (by @sergun).
 * Added – Check `Authentication.User` is not null in claims authorization filter (by @pjcunningham).
   </releaseNotes>
-	<dependencies>
+  <dependencies>
     <dependency id="Owin" version="1.0" />
-		<dependency id="Hangfire.Core" version="1.6.0" />
-	</dependencies>
+    <dependency id="Hangfire.Core" version="1.6.0" />
+  </dependencies>
   </metadata>
   <files>
     <file src="Net45\Hangfire.Dashboard.Authorization.dll" target="lib\net45" />

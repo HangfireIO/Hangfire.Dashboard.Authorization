@@ -7,7 +7,7 @@
 #   - Section names should be unique on each level.
 
 # Don't edit manually! Use `build.bat version` command instead!
-version: 2.1.0-build-{build}
+version: 3.0.0-build-{build}
 
 # branches to build
 branches:
