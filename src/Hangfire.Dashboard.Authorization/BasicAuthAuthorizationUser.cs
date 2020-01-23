@@ -26,7 +26,8 @@ namespace Hangfire.Dashboard
         /// </summary>
         public BasicAuthAuthorizationUser(Func<HashAlgorithm> cryptoProviderFactory)
         {
-            CryptoProviderFactory = cryptoProviderFactory ?? throw new ArgumentNullException(nameof(cryptoProviderFactory));
+            if (cryptoProviderFactory == null) throw new ArgumentNullException("cryptoProviderFactory");
+            CryptoProviderFactory = cryptoProviderFactory;
         }
 
         /// <summary>
