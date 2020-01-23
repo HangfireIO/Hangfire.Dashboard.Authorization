@@ -75,7 +75,7 @@ var filter = new BasicAuthAuthorizationFilter(
 
 It is also possible to use other than `SHA1` crypto provider by specifying it when creating a user:
 
-```
+```csharp
 var user = new BasicAuthAuthorizationUser(HMAC.Create)
 {
     Login = "Admin",
