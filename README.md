@@ -98,4 +98,4 @@ using (var cryptoProvider = System.Security.Cryptography.SHA1.Create())
 }
 ```
 
-The `result` variable will contain byte array definition with your passowrd.
+The `result` variable will contain byte array definition with your password.
