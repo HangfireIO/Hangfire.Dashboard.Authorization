@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Hangfire.Dashboard.Authorization")]
 [assembly: AssemblyDescription("Some authorization filters for Hangfire's Dashboard.")]
 [assembly: AssemblyProduct("Hangfire")]
-[assembly: AssemblyCopyright("Copyright © 2014 Sergey Odinokov")]
+[assembly: AssemblyCopyright("Copyright © 2014-2022 Hangfire OÜ")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
