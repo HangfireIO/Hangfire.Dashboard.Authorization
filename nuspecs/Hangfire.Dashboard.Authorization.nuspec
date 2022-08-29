@@ -13,6 +13,9 @@
     <copyright>Copyright © 2014 Sergey Odinokov</copyright>
     <tags>Hangfire Dashboard Authorization</tags>
     <releaseNotes>https://github.com/HangfireIO/Hangfire.Dashboard.Authorization/releases
+3.0.1
+* Changed – Upgrade internal version of `Microsoft.Owin` package to 4.2.2.
+* Security – Avoid CVE-2020-1045 vulnerability by upgrading `Microsoft.Owin` package.
 
 3.0.0
 * Added – All classes now implement `IDashboardAuthorizationFilter` interface appeared in Hangfire 1.6.0 (by @antonioseric, @spoofi).
