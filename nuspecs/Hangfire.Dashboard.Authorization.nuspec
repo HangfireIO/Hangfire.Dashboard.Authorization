@@ -2,17 +2,18 @@
 <package >
   <metadata>
     <id>Hangfire.Dashboard.Authorization</id>
-    <version>0.0.0</version>
+    <version>%version%</version>
     <title>Hangfire Dashboard Authorization Filters</title>
     <authors>Sergey Odinokov</authors>
-    <owners>odinserj</owners>
+    <owners>HangfireIO, odinserj</owners>
     <projectUrl>https://github.com/HangfireIO/Hangfire.Dashboard.Authorization</projectUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <licenseUrl>https://raw.github.com/HangfireIO/Hangfire.Dashboard.Authorization/master/LICENSE</licenseUrl>
+    <repository type="git" url="https://github.com/HangfireIO/Hangfire.Dashboard.Authorization.git" commit="%commit%" />
+    <license type="expression">MIT</license>
     <description>Some authorization filters for Hangfire's Dashboard.</description>
-    <copyright>Copyright © 2014 Sergey Odinokov</copyright>
+    <copyright>Copyright © 2014-2024 Hangfire OÜ</copyright>
     <tags>Hangfire Dashboard Authorization</tags>
     <releaseNotes>https://github.com/HangfireIO/Hangfire.Dashboard.Authorization/releases
+
 3.0.1
 * Changed – Upgrade internal version of `Microsoft.Owin` package to 4.2.2.
 * Security – Avoid CVE-2020-1045 vulnerability by upgrading `Microsoft.Owin` package.
@@ -30,8 +31,10 @@
 * Added – Check `Authentication.User` is not null in claims authorization filter (by @pjcunningham).
   </releaseNotes>
   <dependencies>
-    <dependency id="Owin" version="1.0" />
-    <dependency id="Hangfire.Core" version="1.6.0" />
+    <group targetFramework="net45">
+      <dependency id="Owin" version="1.0" />
+      <dependency id="Hangfire.Core" version="1.6.0" />
+    </group>
   </dependencies>
   </metadata>
   <files>

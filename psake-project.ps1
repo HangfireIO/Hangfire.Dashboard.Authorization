@@ -1,20 +1,18 @@
-Properties {
-    $solution = "Hangfire.Dashboard.Authorization.sln"
-}
-
-Include "packages\Hangfire.Build.*\tools\psake-common.ps1"
+Include "packages\Hangfire.Build.0.4.3\tools\psake-common.ps1"
 
 Task Default -Depends Pack
 
 Task Merge -Depends Compile -Description "Run ILMerge /internalize to merge assemblies." {
-    Merge-Assembly "Hangfire.Dashboard.Authorization" @("Microsoft.Owin")
+    Repack-Assembly @("Hangfire.Dashboard.Authorization", "net45") @("Microsoft.Owin")
 }
 
 Task Collect -Depends Merge -Description "Copy all artifacts to the build folder." {
-    Collect-Assembly "Hangfire.Dashboard.Authorization" "Net45"
+    Collect-Assembly "Hangfire.Dashboard.Authorization" "net45"
 }
 
 Task Pack -Depends Collect -Description "Create NuGet packages and archive files." {
-    $version = Get-BuildVersion
+    $version = Get-PackageVersion
+    
     Create-Package "Hangfire.Dashboard.Authorization" $version
+    Create-Archive "Hangfire.Dashboard.Authorization-$version"
 }
