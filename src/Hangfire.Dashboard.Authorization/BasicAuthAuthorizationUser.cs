@@ -26,7 +26,7 @@ namespace Hangfire.Dashboard
         /// </summary>
         public BasicAuthAuthorizationUser(Func<HashAlgorithm> cryptoProviderFactory)
         {
-            if (cryptoProviderFactory == null) throw new ArgumentNullException("cryptoProviderFactory");
+            if (cryptoProviderFactory == null) throw new ArgumentNullException(nameof(cryptoProviderFactory));
             CryptoProviderFactory = cryptoProviderFactory;
         }
 
@@ -45,12 +45,14 @@ namespace Hangfire.Dashboard
         /// Gets or sets a password hash for the user. Please use the <see cref="PasswordClear"/>
         /// property to set a plain text password that will be hashed automatically.
         /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1819:Properties should not return arrays", Justification = "Breaking change required")]
         public byte[] Password { get; set; }
 
         /// <summary>
         /// Sets the <see cref="Password"/> property from a string by automatically hashing it
         /// using the given <see cref="CryptoProviderFactory"/>.
         /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1044:Properties should not be write only", Justification = "Breaking change required")]
         public string PasswordClear
         {
             set
@@ -72,10 +74,10 @@ namespace Hangfire.Dashboard
         public bool Validate(string login, string password, bool loginCaseSensitive)
         {
             if (String.IsNullOrWhiteSpace(login) == true)
-                throw new ArgumentNullException("login");
+                throw new ArgumentNullException(nameof(login));
 
             if (String.IsNullOrWhiteSpace(password) == true)
-                throw new ArgumentNullException("password");
+                throw new ArgumentNullException(nameof(password));
 
             if (login.Equals(Login, loginCaseSensitive ? StringComparison.InvariantCulture : StringComparison.InvariantCultureIgnoreCase) == true)
             {

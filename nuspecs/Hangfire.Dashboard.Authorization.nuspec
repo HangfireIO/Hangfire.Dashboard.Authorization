@@ -40,7 +40,5 @@
   <files>
     <file src="Net45\Hangfire.Dashboard.Authorization.dll" target="lib\net45" />
     <file src="Net45\Hangfire.Dashboard.Authorization.xml" target="lib\net45" />
-    <file src="Net45\Hangfire.Dashboard.Authorization.pdb" target="lib\net45" />
-    <file src="..\src\Hangfire.Dashboard.Authorization\**\*.cs" target="src" />
   </files>
 </package>

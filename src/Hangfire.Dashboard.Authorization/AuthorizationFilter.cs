@@ -6,7 +6,9 @@ using Microsoft.Owin;
 
 namespace Hangfire.Dashboard
 {
+#pragma warning disable CS0618 // Type or member is obsolete
     public class AuthorizationFilter : IAuthorizationFilter, IDashboardAuthorizationFilter
+#pragma warning restore CS0618 // Type or member is obsolete
     {
         private static readonly string[] EmptyArray = new string[0];
 

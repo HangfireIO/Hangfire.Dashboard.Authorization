@@ -4,15 +4,17 @@ using Microsoft.Owin;
 
 namespace Hangfire.Dashboard
 {
+#pragma warning disable CS0618 // Type or member is obsolete
     public class ClaimsBasedAuthorizationFilter : IAuthorizationFilter, IDashboardAuthorizationFilter
+#pragma warning restore CS0618 // Type or member is obsolete
     {
         private readonly string _type;
         private readonly string _value;
 
         public ClaimsBasedAuthorizationFilter(string type, string value)
         {
-            if (type == null) throw new ArgumentNullException("type");
-            if (value == null) throw new ArgumentNullException("value");
+            if (type == null) throw new ArgumentNullException(nameof(type));
+            if (value == null) throw new ArgumentNullException(nameof(value));
 
             _type = type;
             _value = value;

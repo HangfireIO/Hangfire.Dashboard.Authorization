@@ -11,7 +11,9 @@ namespace Hangfire.Dashboard
     /// Represents Hangfire authorization filter for basic authentication.
     /// </summary>
     /// <remarks>If you are using this together with OWIN security, configure Hangfire BEFORE OWIN security configuration.</remarks>
+#pragma warning disable CS0618 // Type or member is obsolete
     public class BasicAuthAuthorizationFilter : IAuthorizationFilter, IDashboardAuthorizationFilter
+#pragma warning restore CS0618 // Type or member is obsolete
     {
         private readonly BasicAuthAuthorizationFilterOptions _options;
         
@@ -25,9 +27,9 @@ namespace Hangfire.Dashboard
             _options = options;
         }
 
-        public bool Authorize(DashboardContext dashboardContext)
+        public bool Authorize(DashboardContext context)
         {
-            return Authorize(dashboardContext.GetOwinEnvironment());
+            return Authorize(context.GetOwinEnvironment());
         }
 
         public bool Authorize(IDictionary<string, object> owinEnvironment)
@@ -58,7 +60,7 @@ namespace Hangfire.Dashboard
             {
                 AuthenticationHeaderValue authValues = AuthenticationHeaderValue.Parse(header);
 
-                if ("Basic".Equals(authValues.Scheme, StringComparison.InvariantCultureIgnoreCase))
+                if ("Basic".Equals(authValues.Scheme, StringComparison.OrdinalIgnoreCase))
                 {
                     string parameter = Encoding.UTF8.GetString(Convert.FromBase64String(authValues.Parameter));
                     var parts = parameter.Split(':');
@@ -82,7 +84,7 @@ namespace Hangfire.Dashboard
             return Challenge(context);
         }
 
-        private bool Challenge(OwinContext context)
+        private static bool Challenge(OwinContext context)
         {
             context.Response.StatusCode = 401;
             context.Response.Headers.Append("WWW-Authenticate", "Basic realm=\"Hangfire Dashboard\"");
