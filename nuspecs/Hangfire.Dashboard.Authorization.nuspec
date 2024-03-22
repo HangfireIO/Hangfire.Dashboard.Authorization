@@ -16,21 +16,29 @@
     <tags>Hangfire Dashboard Authorization</tags>
     <releaseNotes>https://github.com/HangfireIO/Hangfire.Dashboard.Authorization/releases
 
+3.1.0
+• Project – Full source link support with embedded symbols and repository-based sources.
+• Project – Enable static analysis via the Microsoft.CodeAnalysis.NetAnalyzers package.
+• Project – Sign NuGet package and .NET assemblies with a code signing certificate.
+• Project – Require signature validation when restoring NuGet packages.
+• Project – Use deterministic and locked package restore for projects.
+• Project – Add more metadata for assemblies and NuGet package.
+
 3.0.1
-* Changed – Upgrade internal version of `Microsoft.Owin` package to 4.2.2.
-* Security – Avoid CVE-2020-1045 vulnerability by upgrading `Microsoft.Owin` package.
+• Changed – Upgrade internal version of `Microsoft.Owin` package to 4.2.2.
+• Security – Avoid CVE-2020-1045 vulnerability by upgrading `Microsoft.Owin` package.
 
 3.0.0
-* Added – All classes now implement `IDashboardAuthorizationFilter` interface appeared in Hangfire 1.6.0 (by @antonioseric, @spoofi).
-* Added – It's possible to use custom crypto provider such as `HMAC` when creating a BasicAuth user (by @faizulhaque).
-* Changed – Minimal `Hangfire.Core` package version is bumped to 1.6.0.
-* Changed – Internalized `Microsoft.Owin` package version is now 3.1.0.
-* Fixed – Remove `AssemblyFileVersion` attribute to avoid problems with installers and GAC (by @fire-eagle).
-* Fixed – Different `README.md` updates and fixes (by @spoofi).
+• Added – All classes now implement `IDashboardAuthorizationFilter` interface appeared in Hangfire 1.6.0 (by @antonioseric, @spoofi).
+• Added – It's possible to use custom crypto provider such as `HMAC` when creating a BasicAuth user (by @faizulhaque).
+• Changed – Minimal `Hangfire.Core` package version is bumped to 1.6.0.
+• Changed – Internalized `Microsoft.Owin` package version is now 3.1.0.
+• Fixed – Remove `AssemblyFileVersion` attribute to avoid problems with installers and GAC (by @fire-eagle).
+• Fixed – Different `README.md` updates and fixes (by @spoofi).
     
 2.1.0
-* Added – Basic authentication filter (by @sergun).
-* Added – Check `Authentication.User` is not null in claims authorization filter (by @pjcunningham).
+• Added – Basic authentication filter (by @sergun).
+• Added – Check `Authentication.User` is not null in claims authorization filter (by @pjcunningham).
   </releaseNotes>
   <dependencies>
     <group targetFramework="net45">
