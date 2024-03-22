@@ -52,5 +52,6 @@
     <file src="Net45\Hangfire.Dashboard.Authorization.xml" target="lib\net45" />
     <file src="..\nuspecs\icon.png" />
     <file src="README.md" />
+    <file src="LICENSE" />
   </files>
 </package>
