@@ -7,7 +7,7 @@
 #   - Section names should be unique on each level.
 
 # Please don't edit it manually, use the `build.bat version` command instead.
-version: 3.0.1-build-{build}
+version: 3.1.0-build-{build}
 
 image: Visual Studio 2022
 

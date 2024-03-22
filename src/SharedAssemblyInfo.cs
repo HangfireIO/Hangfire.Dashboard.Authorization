@@ -6,4 +6,4 @@ using System.Reflection;
 [assembly: AssemblyCulture("")]
 
 // Please don't edit it manually, use the `build.bat version` command instead.
-[assembly: AssemblyVersion("3.0.1")]
+[assembly: AssemblyVersion("3.1.0")]
