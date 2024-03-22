@@ -8,6 +8,7 @@ Task Merge -Depends Compile -Description "Run ILMerge /internalize to merge asse
 
 Task Collect -Depends Merge -Description "Copy all artifacts to the build folder." {
     Collect-Assembly "Hangfire.Dashboard.Authorization" "net45"
+    Collect-File "README.md"
 }
 
 Task Pack -Depends Collect -Description "Create NuGet packages and archive files." {

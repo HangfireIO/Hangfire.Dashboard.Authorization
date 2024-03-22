@@ -8,7 +8,7 @@ Installation
 
 This library is available as a NuGet Package:
 
-```
+```powershell
 Install-Package Hangfire.Dashboard.Authorization
 ```
 
