@@ -12,11 +12,21 @@ version: 3.1.0-build-{build}
 image: Visual Studio 2022
 
 #---------------------------------#
+#    environment configuration    #
+#---------------------------------#
+
+environment:
+  SIGNPATH_API_TOKEN:
+    secure: ffeHyaYouBLIuRcLG2PZUUZU2BtU6bH18UxKIyGtuKnqrqsRi4yroF1mn9oJ24KV
+
+#---------------------------------#
 #       build configuration       #
 #---------------------------------#
 
-# to run your custom scripts instead of automatic MSBuild
-build_script: build.bat
+before_build:
+  - ps: Install-Module -Name SignPath
+
+build_script: build.bat sign
 
 #---------------------------------#
 #       tests configuration       #
