@@ -32,57 +32,61 @@ namespace Hangfire.Dashboard
             return Authorize(context.GetOwinEnvironment());
         }
 
-        public bool Authorize(IDictionary<string, object> owinEnvironment)
+       public bool Authorize(IDictionary<string, object> owinEnvironment)
+{
+    OwinContext context = new OwinContext(owinEnvironment);
+
+    // Redirect to HTTPS if SslRedirect is enabled and the request is not secure
+    if (_options.SslRedirect && context.Request.Uri.Scheme != "https")
+    {
+        context.Response.OnSendingHeaders(state =>
         {
-            OwinContext context = new OwinContext(owinEnvironment);
+            string redirectUri = new UriBuilder("https", context.Request.Uri.Host, 443, context.Request.Uri.PathAndQuery).ToString();
+            context.Response.StatusCode = 301;
+            context.Response.Redirect(redirectUri);
+        }, null);
+        return false;
+    }
 
-            if ((_options.SslRedirect == true) && (context.Request.Uri.Scheme != "https"))
+    // Reject request if RequireSsl is enabled and the request is not secure
+    if (_options.RequireSsl && !context.Request.IsSecure)
+    {
+        context.Response.Write("Secure connection is required to access Hangfire Dashboard.");
+        return false;
+    }
+
+    // Check for Authorization header
+    string header = context.Request.Headers["Authorization"];
+    if (!string.IsNullOrWhiteSpace(header))
+    {
+        AuthenticationHeaderValue authValues = AuthenticationHeaderValue.Parse(header);
+
+        // Process Basic authentication
+        if (authValues.Scheme.Equals("Basic", StringComparison.OrdinalIgnoreCase))
+        {
+            string parameter = Encoding.UTF8.GetString(Convert.FromBase64String(authValues.Parameter));
+            var parts = parameter.Split(':');
+
+            if (parts.Length > 1)
             {
-                context.Response.OnSendingHeaders(state =>
+                string login = parts[0];
+                string password = parts[1];
+
+                if (!string.IsNullOrWhiteSpace(login) && !string.IsNullOrWhiteSpace(password))
                 {
-                    string redirectUri = new UriBuilder("https", context.Request.Uri.Host, 443, context.Request.Uri.PathAndQuery).ToString();
-
-                    context.Response.StatusCode = 301;
-                    context.Response.Redirect(redirectUri);
-                }, null);
-                return false;
-            }
-
-            if ((_options.RequireSsl == true) && (context.Request.IsSecure == false))
-            {
-                context.Response.Write("Secure connection is required to access Hangfire Dashboard.");
-                return false;
-            }
-
-            string header = context.Request.Headers["Authorization"];
-
-            if (String.IsNullOrWhiteSpace(header) == false)
-            {
-                AuthenticationHeaderValue authValues = AuthenticationHeaderValue.Parse(header);
-
-                if ("Basic".Equals(authValues.Scheme, StringComparison.OrdinalIgnoreCase))
-                {
-                    string parameter = Encoding.UTF8.GetString(Convert.FromBase64String(authValues.Parameter));
-                    var parts = parameter.Split(':');
-
-                    if (parts.Length > 1)
+                    bool isValidUser = _options.Users.Any(user => user.Validate(login, password, _options.LoginCaseSensitive));
+                    if (isValidUser)
                     {
-                        string login = parts[0];
-                        string password = parts[1];
-
-                        if ((String.IsNullOrWhiteSpace(login) == false) && (String.IsNullOrWhiteSpace(password) == false))
-                        {
-                            return _options
-                                .Users
-                                .Any(user => user.Validate(login, password, _options.LoginCaseSensitive))
-                                   || Challenge(context);
-                        }
+                        return true;
                     }
                 }
             }
-
-            return Challenge(context);
         }
+    }
+
+    // Challenge the request if authorization fails
+    return Challenge(context);
+}
 
         private static bool Challenge(OwinContext context)
         {
